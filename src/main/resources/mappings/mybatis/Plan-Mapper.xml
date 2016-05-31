@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.maintenance.infrastructure.datasource.maintenance.plan.PlanMapper">
+	<resultMap id="plan" type="com.service.maintenance.domain.model.maintenance.plan.Plan">
+		<result property="id.value" column="CONTRACT_ID"/>
+		<collection property="months" ofType="com.service.maintenance.domain.model.maintenance.plan.InspectionMonth">
+			<result property="value" column="MONTH"/>
+			<collection property="inspectionPoints" ofType="com.service.maintenance.domain.model.maintenance.plan.InspectionPoint">
+				<result property="id" column="INSPECTION_POINT"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<select id="findBy" resultMap="plan">
+		SELECT * FROM MAINTENANCE.PLAN WHERE CONTRACT_ID = #{id.value};
+	</select>
+
+    <insert id="register" parameterType="java.util.List">
+    	INSERT INTO MAINTENANCE.PLAN (CONTRACT_ID, MONTH, INSPECTION_POINT) VALUES
+   		<foreach collection="plan.asList()" item="month" separator =",">
+   			<foreach collection="month.asPoints()" item="point" separator =",">
+		        (#{plan.id.value},#{month.value},#{point.id})
+	        </foreach>
+	    </foreach>
+    </insert>
+</mapper>

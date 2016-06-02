@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>AdminLTE 2 | Dashboard</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" type="text/css" href="../static/plugins/fullcalendar/fullcalendar.min.css" th:href="@{/plugins/fullcalendar/fullcalendar.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/plugins/fullcalendar/fullcalendar.print.css" media="print" th:href="@{/plugins/fullcalendar/fullcalendar.print.css}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/AdminLTE.min.css" th:href="@{/dist/css/AdminLTE.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/skins/_all-skins.min.css" th:href="@{/dist/css/skins/_all-skins.min.css}" />
+
+    <!-- jQuery 2.2.0 -->
+    <script src="../static/plugins/jQuery/jQuery-2.2.0.min.js" th:src="@{/plugins/jQuery/jQuery-2.2.0.min.js}" ></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="../static/plugins/fullcalendar/fullcalendar.min.js" th:src="@{/plugins/fullcalendar/fullcalendar.min.js}" ></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+    <script src="../static/dist/js/app.min.js" th:src="@{/dist/js/app.min.js}" ></script>
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="../dist/js/pages/dashboard.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      
+        <header th:replace="layout/AdminLTELayout/include :: header"></header>
+        <aside th:replace="layout/AdminLTELayout/include :: sidebar"></aside>
+      
+        <div class="content-wrapper">
+            
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard <small>Control panel</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- /.col -->
+                <div class="row">
+                    <div layout:fragment="main-content" th:remove="tag"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div layout:fragment="script" th:remove="tag"></div>
+</body>
+</html>

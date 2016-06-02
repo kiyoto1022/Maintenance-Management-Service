@@ -11,7 +11,8 @@ spring:
       in-memory: false
       pool.enabled: false
     h2.console.enabled: true
-      
+    thymeleaf.cache: false
+        
 flyway:
   clean-on-validation-error: true
   locations:

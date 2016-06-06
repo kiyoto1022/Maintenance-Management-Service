@@ -1,5 +1,7 @@
 package com.service.maintenance.presentation.controller.maintenance.contract;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +35,11 @@ public class ContractController {
 	public ContractResponse get(@PathVariable Long id) {
 		Contract contract = contractService.confirmTo(new ContractId(id));
 		return new ContractResponse(contract);
+	}
+	
+	@RequestMapping(value = "list", method=RequestMethod.GET)
+	public List<ContractResponse> list() {
+		return ContractResponse.from(contractService.list());
 	}
 
 }

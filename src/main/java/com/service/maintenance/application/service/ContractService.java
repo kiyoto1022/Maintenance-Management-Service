@@ -1,5 +1,7 @@
 package com.service.maintenance.application.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,9 @@ public class ContractService {
 	
 	public Contract confirmTo(ContractId id) {
 		return repository.findBy(id);
+	}
+	
+	public List<Contract> list() {
+		return repository.list();
 	}
 }

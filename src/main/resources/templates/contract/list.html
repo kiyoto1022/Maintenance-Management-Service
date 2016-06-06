@@ -8,9 +8,48 @@
 </head>
 <body>
     <div layout:fragment="main-content">
-		
+		<div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Contract List </h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+	                <form role="form" th:action="@{/contract/search.html}" method="post">
+      	              <input type="text" name="contractId" class="form-control pull-right" placeholder="Search" />
+	                </form>
+	                  <div class="input-group-btn">
+                      	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+	                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>Id</th>
+                  <th>Contract Name</th>
+                  <th>Fiscal Year</th>
+                  <th>Amount</th>
+                  <th>Inspection Rate</th>
+                  <th>command</th>
+                </tr>
+                <tr th:each="contract, stat : ${contracts}" th:object="${contract}">
+                	<td th:text="*{id}">1</td>
+                	<td th:text="*{name}">test</td>
+                	<td th:text="*{amount}">11,333</td>
+                	<td th:text="*{fiscalYear}">52年度</td>
+                	<td th:text="*{maintenanceRate}">3</td>
+                    <td><a><span class="label label-success">edit</span></a>  <a><span class="label label-danger">delete</span></a></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
     </div>
-    
     <div layout:fragment="script">
     </div>
 

@@ -1,5 +1,8 @@
 package com.service.maintenance.presentation.view.maintenance.contract;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.service.maintenance.domain.model.maintenance.contract.Contract;
 
 public class ContractResponse {
@@ -18,6 +21,10 @@ public class ContractResponse {
 		this.fiscalYear = model.fiscalYear();
 		this.amount = model.amount();
 		this.maintenanceRate = model.maintenanceRate();
+	}
+	
+	public static List<ContractResponse> from(List<Contract> contracts) {
+		return contracts.stream().map(c -> new ContractResponse(c)).collect(Collectors.toList());
 	}
 	
 }

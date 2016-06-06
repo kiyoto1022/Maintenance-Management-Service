@@ -14,12 +14,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM MAINTENANCE.CONTRACT WHERE CONTRACT_ID = #{id.value};
 	</select>
 
+	<select id="list" resultMap="contract">
+		SELECT * FROM MAINTENANCE.CONTRACT ORDER BY CONTRACT_ID;
+	</select>
+	
     <insert id="register">
         INSERT INTO MAINTENANCE.CONTRACT (
-          CONTRACT_ID, CONTRACT_NAME, FISCAL_YEAR, AMOUNT
+          CONTRACT_ID, CONTRACT_NAME, FISCAL_YEAR, AMOUNT, MAINTENANCE_RATE
         )
         VALUES (
-        #{contract.id.value},#{contract.name},#{contract.fiscalYear},#{contract.amount}
+        #{contract.id.value},#{contract.name},#{contract.fiscalYear},#{contract.amount},#{contract.maintenanceRate}
         );
     </insert>
 </mapper>
